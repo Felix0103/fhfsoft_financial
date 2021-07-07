@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BillingCycle;
 use App\Models\Client;
 use App\Models\Partner;
 use App\Models\User;
@@ -21,8 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call(IdentificationTypeSeeder::class);
 
         $this->call(CountrySeeder::class);
-        Partner::factory(10)->create();
-        Client::factory(50)->create();
+        $this->call(BillingCycleSeeder::class);
+        $this->call(LoanTypeSeeder::class);
+        // Partner::factory(10)->create();
+        // Client::factory(50)->create();
 
         User::create([
             'name' => 'Felix Hernandez',
@@ -31,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678'), // password
             'remember_token' => Str::random(10),
         ])->assignRole('Admin');
-        User::factory(20)->create();
+        /// User::factory(20)->create();
 
     }
 }

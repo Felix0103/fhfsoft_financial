@@ -65,5 +65,15 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.payments.edit','description' =>'Editar pagos' ])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.payments.destroy','description' =>'Eliminar pagos' ])->syncRoles([$admin]);
 
+        Permission::create(['name' => 'admin.transactiontypes.index','description' =>'Ver tipos de transaciones' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.transactiontypes.create','description' =>'Crear tipos de transaciones' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.transactiontypes.edit','description' =>'Editar tipos de transaciones' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.transactiontypes.destroy','description' =>'Eliminar tipos de transaciones' ])->syncRoles([$admin]);
+
+        Permission::create(['name' => 'admin.accounts.index','description' =>'Ver cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.accounts.create','description' =>'Crear cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.accounts.edit','description' =>'Editar cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.accounts.destroy','description' =>'Eliminar cuentas' ])->syncRoles([$admin]);
+
     }
 }

@@ -86,7 +86,7 @@ return [
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
 
     /*
@@ -285,6 +285,21 @@ return [
                     'can'         => 'admin.loancategories.index',
                     'active'      => ['admin/loancategories*']
                 ],
+                [
+                    'text' => 'Tipos de Transaciones',
+                    'route'  => 'admin.transactiontypes.index',
+                    'icon' => 'fas fa-fw fa-user-shield',
+                    'can'         => 'admin.transactiontypes.index',
+                    'active'      => ['admin/transactiontypes*']
+                ],
+                [
+                    'text' => 'Cuentas Contables',
+                    'route'  => 'admin.accounts.index',
+                    'icon' => 'fas fa-fw fa-user-shield',
+                    'can'         => 'admin.accounts.index',
+                    'active'      => ['admin/accounts*']
+                ],
+
 
             ],
 
