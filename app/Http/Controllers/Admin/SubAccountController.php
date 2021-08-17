@@ -23,11 +23,12 @@ class SubAccountController extends Controller
     {
 
         $request->validate([
-            'description2' => 'required'
-        ], [], ['description2' => 'nombre de la sub cuenta']);
+            'description2' => 'required',
+            'code2' => 'required'
+        ], [], ['description2' => 'nombre de la sub cuenta', 'code2' => 'codigo de sub cuenta']);
 
 
-        SubAccount::create(['description' => $request->input('description2'), 'account_id'=> $request->input('account_id') ]);
+        SubAccount::create(['description' => $request->input('description2'), 'account_id'=> $request->input('account_id'), 'code'=>  $request->input('code2')]);
         return redirect()->route('admin.accounts.edit',$request->input('account_id'))->with('info', 'La sub cuenta se creo correctamente');
 
     }

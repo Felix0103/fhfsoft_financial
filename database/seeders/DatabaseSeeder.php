@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\BillingCycle;
 use App\Models\Client;
 use App\Models\Partner;
+use App\Models\TransactionType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(BillingCycleSeeder::class);
         $this->call(LoanTypeSeeder::class);
+        $this->call(AccountSeeder::class);
+        $this->call(TransactionTypeSeeder::class);
         // Partner::factory(10)->create();
         // Client::factory(50)->create();
 

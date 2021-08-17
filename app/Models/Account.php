@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-    protected  $fillable = ['description','active'];
+    protected  $fillable = ['description','active','code'];
     use HasFactory;
 
     public function sub_accounts(){

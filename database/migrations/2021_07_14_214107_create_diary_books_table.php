@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountsTable extends Migration
+class CreateDiaryBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('diary_books', function (Blueprint $table) {
             $table->id();
             $table->string('description');
-            $table->integer('active')->default(1);
+            $table->foreignId('sub_account_id');
+            $table->foreignId('client_id');
+            $table->decimal('amount');
+            $table->date('transaction_date');
+            $table->integer('active');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('diary_books');
     }
 }

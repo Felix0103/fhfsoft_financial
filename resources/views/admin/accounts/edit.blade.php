@@ -46,8 +46,20 @@
             </div>
             {!! Form::open(['route'=>'admin.subaccounts.store', 'method'=>'post']) !!}
                 <div class="modal-body">
-                    {!! Form::hidden('account_id', $account->id) !!}
-                {!! Form::text('description2', null, ['class'=>'form-control','placeholder' => "Digite el nombre de la sub cuenta de $account->description" ]) !!}
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                {!! Form::text('code2', null, ['class'=>'form-control','placeholder' => "Codigo" ]) !!}
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                {!! Form::hidden('account_id', $account->id) !!}
+                                {!! Form::text('description2', null, ['class'=>'form-control','placeholder' => "Digite el nombre de la sub cuenta de $account->description" ]) !!}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

@@ -22,6 +22,7 @@ class CreateClientsTable extends Migration
             $table->double('credit_limit',8,2);
             $table->foreignId('partner_id')->nullable()->onDelete('set null');;
             $table->integer('active')->default(1);
+            $table->foreignId('sub_account_id')->nullable();
             $table->timestamps();
         });
     }

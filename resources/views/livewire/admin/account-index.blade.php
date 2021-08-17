@@ -1,16 +1,16 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input wire:model="search" type="text"  class="form-control" placeholder='Ingrese el nombre o apellido de un accounte' />
+            <input wire:model="search" type="text"  class="form-control" placeholder='Ingrese el nombre una cuenta' />
         </div>
         @if ($accounts->count())
              <div class="card-body">
                  <table class="table table-striped">
                      <thead>
                          <tr>
-                             <th wire:click="order('id')" class="pointer">
-                                 ID
-                                 @if ($sort == 'id')
+                             <th wire:click="order('code')" class="pointer" style="width:15%">
+                                 Codigo
+                                 @if ($sort == 'code')
                                  <i class="fas fa-sort-alpha-{{$direction=="desc"?"down":"up"}}-alt float-right mt-1"></i>
                                  @endif
                                  <i class="fas fa-sort float-right mt-1"></i>
@@ -29,7 +29,7 @@
                      <tbody>
                          @foreach ($accounts as $account)
                              <tr>
-                                 <td >{{$account->id}}</td>
+                                 <td  >{{$account->code}}</td>
                                  <td >{{$account->description}}</td>
                                  <td width="10px">
                                      @can('admin.accounts.edit')

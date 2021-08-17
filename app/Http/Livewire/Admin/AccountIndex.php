@@ -12,7 +12,7 @@ class AccountIndex extends Component
     protected $paginationTheme ='bootstrap';
     public $search;
     public $sort = 'id';
-    public $direction = 'desc';
+    public $direction = 'asc';
 
     public function updatingSearch(){
         $this->resetPage();

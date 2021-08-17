@@ -14,7 +14,7 @@ class LoanTypeSeeder extends Seeder
      */
     public function run()
     {
-        LoanType::create(['description' => 'Prestamo']);
+        LoanType::create(['description' => 'Prestamo Amortizable']);
         LoanType::create(['description' => 'San']);
         LoanType::create(['description' => 'Redito']);
     }

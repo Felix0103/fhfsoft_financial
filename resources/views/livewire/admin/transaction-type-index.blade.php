@@ -37,13 +37,16 @@
                              <tr>
                                  <td >{{$transaction_type->id}}</td>
                                  <td >{{$transaction_type->description}}</td>
-                                 <td class="d-none d-sm-block">{{($transaction_type->type==1?"Credito":"Debito")}}</td>
+                                 <td class="d-none d-sm-block">{{($transaction_type->type==1?"Credito":($transaction_type->type==2?"Debito":"Pago"))}}</td>
                                  <td width="10px">
-                                     @can('admin.transactiontypes.edit')
-                                         <a class="btn btn-primary btn-sm" href="{{route('admin.transactiontypes.edit', $transaction_type)}}">Editar</a>
-                                     @endcan
+                                     @if ($transaction_type->id>5)
+                                        @can('admin.transactiontypes.edit')
+                                            <a class="btn btn-primary btn-sm" href="{{route('admin.transactiontypes.edit', $transaction_type)}}">Editar</a>
+                                        @endcan
+                                     @endif
                                  </td>
                                  <td width="10px">
+
                                     @can('admin.transactiontypes.destroy')
                                         {!! Form::open(['route'=>['admin.transactiontypes.destroy', $transaction_type], 'method'=>'delete']) !!}
                                             {!! Form::submit( ($transaction_type->active==1?'Desactivar':'Activar'), ['class'=> "btn btn-".($transaction_type->active==0?'success':'danger')." btn-sm"] ) !!}

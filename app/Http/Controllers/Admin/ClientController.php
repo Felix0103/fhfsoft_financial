@@ -7,6 +7,7 @@ use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Models\IdentificationType;
 use App\Models\Partner;
+use App\Models\SubAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,9 @@ class ClientController extends Controller
 
         $client->address()->create($request->all());
         $client->contact()->create($request->all());
-
+        $account = SubAccount::create(['description' => "$client->first_name $client->last_name"  , 'account_id'=> 2, 'code' => '11-20-'.$client->id]);
+        $client->sub_account_id = $account->id;
+        $client->update();
         return redirect()->route('admin.clients.edit',$client)->with('info', 'El cliente se creo exitosamente');
 
     }
@@ -71,6 +74,9 @@ class ClientController extends Controller
     public function update(ClientRequest $request, Client $client)
     {
         $client->update($request->all());
+        $account = SubAccount::find($client->sub_account_id);
+        $account->description = "$client->first_name $client->last_name";
+
         if($client->address){
             $client->address->update($request->all());
         }else{

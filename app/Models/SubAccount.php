@@ -9,7 +9,7 @@ class SubAccount extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description', 'account_id', 'active'];
+    protected $fillable = ['description', 'account_id', 'active','code'];
     public function account(){
         return $this->belongsTo(Account::class);
     }

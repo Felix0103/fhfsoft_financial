@@ -17,4 +17,10 @@ class Client extends Model
     public function contact(){
         return $this->morphOne(Contact::class,'contactable');
     }
+    public function loans(){
+        return $this->hasMany(Client::class);
+    }
+    public function sub_account(){
+        return $this->belongsTo(SubAccount::class);
+    }
 }

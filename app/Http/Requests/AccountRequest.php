@@ -25,14 +25,16 @@ class AccountRequest extends FormRequest
     {
         $account = $this->route()->parameter('account');
         $rules = [
-            'description' => "required|unique:accounts,description,$account?->id"
+            'description' => "required|unique:accounts,description,$account?->id",
+            'code' => "required|unique:accounts,code,$account?->code"
         ];
         return $rules;
     }
     public function attributes(){
         return [
 
-            'description' => 'Nombre de la cuenta'
+            'description' => 'Nombre de la cuenta',
+            'code' => 'Codigo de la cuenta'
         ];
     }
 }

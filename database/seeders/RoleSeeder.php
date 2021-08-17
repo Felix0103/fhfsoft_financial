@@ -75,5 +75,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.accounts.edit','description' =>'Editar cuentas' ])->syncRoles([$admin]);
         Permission::create(['name' => 'admin.accounts.destroy','description' =>'Eliminar cuentas' ])->syncRoles([$admin]);
 
+        Permission::create(['name' => 'admin.dailybook.index','description' =>'Ver cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.dailybook.create','description' =>'Crear cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.dailybook.edit','description' =>'Editar cuentas' ])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.dailybook.destroy','description' =>'Eliminar cuentas' ])->syncRoles([$admin]);
+
+
     }
 }

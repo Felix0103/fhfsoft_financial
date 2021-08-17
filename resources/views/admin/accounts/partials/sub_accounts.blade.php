@@ -10,7 +10,7 @@
                     <thead>
                         <tr>
                             <th class="pointer">
-                                ID
+                                Codigo
                             </th>
                             <th>
                                 Nombre de Sub Cuenta
@@ -19,16 +19,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $i=1;
-                        @endphp
+
                         @foreach ($account->sub_accounts as $sub_account)
                             <tr>
-                                <td >@php echo $i++;          @endphp</td>
+                                <td>{{"$sub_account->code"}}</td>
                                 <td >{{$sub_account->description}}</td>
                                 <td width="10px">
                                     @can('admin.accounts.edit')
-                                        <button  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sub-account-edit{{$sub_account->id}}">
+                                        <button {{$sub_account->account_id==2?'disabled':''}}  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sub-account-edit{{$sub_account->id}}">
                                             Editar
                                         </button>
                                     @endcan
