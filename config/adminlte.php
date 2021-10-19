@@ -307,10 +307,17 @@ return [
                     'can'         => 'admin.roles.index',
                     'active'      => ['admin/roles*']
                 ],
+                [
+                    'text'        => 'Perfil',
+                    'route'       => 'profile.show',
+                    'icon'        => 'fas fa-fw fa-id-badge',
+                    'active'      => ['user/profile*']
+                ],
 
             ],
 
         ],
+
 
     ],
 

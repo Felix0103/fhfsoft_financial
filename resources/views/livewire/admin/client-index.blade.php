@@ -1,7 +1,22 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input wire:model="search" type="text"  class="form-control" placeholder='Ingrese el nombre o apellido de un cliente' />
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <input wire:model="search" type="text"  class="form-control" placeholder='Ingrese el nombre o apellido de un cliente' />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="custom-control form-check">
+                        {!! Form::label('include_inactive', 'Inactivos',['class'=>'form-check-label']) !!}
+                        {!! Form::checkbox('include_inactive', null, $includeInactive, ['wire:model'=>'includeInactive']) !!}
+
+                    </div>
+
+                </div>
+            </div>
         </div>
         @if ($clients->count())
              <div class="card-body">
