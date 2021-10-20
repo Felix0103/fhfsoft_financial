@@ -22,11 +22,11 @@ class ClientIndex extends Component
     public function updatingSearch(){
         $this->resetPage();
     }
+    public function activeAll(){
+        $this->includeInactive = !$this->includeInactive;
+    }
     public function render()
     {
-
-
-
 
         $clients = Client::where( function($q){
         $q->where('first_name','like', '%'.$this->search.'%')

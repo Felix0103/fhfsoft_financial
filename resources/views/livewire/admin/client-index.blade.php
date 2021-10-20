@@ -9,10 +9,8 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <div class="custom-control form-check">
-                        {!! Form::label('include_inactive', 'Inactivos',['class'=>'form-check-label']) !!}
-                        {!! Form::checkbox('include_inactive', null, $includeInactive, ['wire:model'=>'includeInactive']) !!}
-
+                    <div class="custom-control">
+                        <button wire:click="activeAll" class="btn btn-{{($includeInactive?'success':'danger')}}">{{($includeInactive?'Mostrar Activos':'Mostrar Inactivos')}}</button>
                     </div>
 
                 </div>
