@@ -72,11 +72,18 @@ class LoanCreate extends Component
         $this->fees_quantity = $data->duration??0;
         $this->billing_cycle_id = $data->billing_cycle_id??0;
         $this->rate = $data->period_rate??0;
+
     }
     public function updatedAmount(){
         $this->calcularCuota();
     }
     public function updatedLoanTypeId(){
+        $this->calcularCuota();
+    }
+    public function updatedFeesQuantity(){
+        $this->calcularCuota();
+    }
+    public function updatedRate(){
         $this->calcularCuota();
     }
     public function calcularCuota(){
@@ -88,7 +95,7 @@ class LoanCreate extends Component
         }else if ($this->loanTypeId ==2){
 
                 if($this->rate <=0){
-                    session()->flash('message', 'Debes Colocar la tasa ejemplo (15)');
+                    session()->flash('message', 'Debes Colocar la tasa ejemplo (10)');
                     $this->cuota=0;
                 }
                 else if($this->fees_quantity<=0){
@@ -98,10 +105,12 @@ class LoanCreate extends Component
                     session()->flash('message', 'El monto del financiamiento debe ser mayor que zero');
                     $this->cuota=0;
                 }else{
-                    $this->cuota = ( ($this->amount*($this->rate/100)) + $this->amount)/$this->fees_quantity;
+                    $this->cuota = ( ($this->amount*($this->rate/100)) ) ;
                 }
 
         }else if($this->loanTypeId == 3){
+            $this->fees_quantity =0;
+
             if($this->rate <=0){
                 session()->flash('message', 'Debes Colocar la tasa ejemplo (15)');
                 $this->cuota=0;

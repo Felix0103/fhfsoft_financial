@@ -309,6 +309,12 @@ return [
             'icon'    => 'fas fa-fw fa-shield-alt',
             'submenu' => [
                 [
+                    'text'        => 'Mi Perfil',
+                    'route'       => 'profile.show',
+                    'icon'        => 'fas fa-fw fa-id-badge',
+                    'active'      => ['user/profile*']
+                ],
+                [
                     'text'        => 'Usuarios',
                     'route'       => 'admin.users.index',
                     'icon'        => 'fas fa-fw fa-users',
@@ -321,12 +327,6 @@ return [
                     'icon' => 'fas fa-fw fa-user-shield',
                     'can'         => 'admin.roles.index',
                     'active'      => ['admin/roles*']
-                ],
-                [
-                    'text'        => 'Perfil',
-                    'route'       => 'profile.show',
-                    'icon'        => 'fas fa-fw fa-id-badge',
-                    'active'      => ['user/profile*']
                 ],
 
             ],
@@ -417,12 +417,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],

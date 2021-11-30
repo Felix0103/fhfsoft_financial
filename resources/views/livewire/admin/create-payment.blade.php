@@ -1,6 +1,6 @@
 <div>
     <form wire:submit.prevent="save">
-        <div class="card">
+        <div class="card small">
 
             <div class="card-body">
 
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="creation_date">Creacion & Desembolso</label>
+                                <label for="creation_date">Fecha Desembolso</label>
                                 <input type="date" wire:model='creation_date' class="form-control">
                             </div>
                             @error('creation_date')
@@ -184,9 +184,11 @@
                 @endif
             </div>
         </div>
-        <div class="div">
-            <button type="submit" class="btn btn-primary">Crear prestamo</button>
-        </div>
+        @if ($current_client )
+            <div class="div">
+                <button type="submit" class="btn btn-primary">Crear prestamo</button>
+            </div>
+        @endif
         <br>
         <div>
             @if (session()->has('message'))
@@ -198,7 +200,7 @@
     </form>
     <div class="modal fade" style="zindex:2000; opacity:100; display: {{$showClienteList?"block":"none"}}; ">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
+          <div class="modal-content small">
             <div class="modal-header">
               <h4 class="modal-title">Lista de Clientes</h4>
               <button wire:click="showModalClient" type="button" class="close" data-dismiss="modal" aria-label="Close">

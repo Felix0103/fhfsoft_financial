@@ -6,7 +6,7 @@
 @section('content_header')
     <div class="row">
         <div class="col">
-            <h1>Creacion de Prestamo</h1>
+            <h1>Creación de Prestamo</h1>
         </div>
         <div class="col">
             <a href="{{ route('admin.loans.index') }}" class="btn btn-secondary btn-sm float-right">Lista de prestamos</a>

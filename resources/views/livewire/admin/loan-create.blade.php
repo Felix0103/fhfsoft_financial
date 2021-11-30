@@ -1,6 +1,6 @@
 <div>
     <form wire:submit.prevent="save">
-        <div class="card">
+        <div class="card small">
 
             <div class="card-body">
 
@@ -130,8 +130,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="billing_cycle_id">Frecuencia de pago</label>
-                                <select wire:model="billing_cycle_id" class="form-control">
-                                    <option value="">Selecciona una frecuencia de pago/option>
+                                <select  wire:model="billing_cycle_id" class="form-control">
+                                    <option value="">Selecciona una frecuencia de pago</option>
                                     @foreach ($billingCycles as $billiCycle)
                                         <option value="{{$billiCycle->id}}" >{{$billiCycle->description}}</option>
                                     @endforeach
@@ -162,10 +162,10 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" >
                             <div class="form-group">
                                 <label for="fees_quantity">Cantidad de Cuotas</label>
-                                <input type="number" wire:model='fees_quantity' class="form-control">
+                                <input type="number" wire:model='fees_quantity' class="form-control" {{$loanTypeId==3?'disabled':''}}>
                             </div>
                             @error('fees_quantity')
                                 <span class="text-danger">{{ $message }}</span>
@@ -184,10 +184,17 @@
                 @endif
             </div>
         </div>
-        <div class="div">
-            <button type="submit" class="btn btn-primary">Crear prestamo</button>
-        </div>
+        @if ($current_client && $loanCategory)
+            <div class="div">
+                <button type="submit" class="btn btn-primary">Crear prestamo</button>
+            </div>
+        @endif
         <br>
+        @if ($loanCategory && $loanTypeId ==3)
+            <p class="badge badge-warning">Los prestamos a redito no tienen tabla de amortización, el interes dependera del monto adeudado al momento de realizar el pago </p>
+        @elseif ($loanCategory && $loanTypeId == 2)
+            <p class="badge badge-warning">El monto de la cuota para los prestamos tipo san sera igual al porcentaje por el capital. Ejemplo: <strong>5,000.00*10% la cuota es 500.00 </strong> </p>
+        @endif
         <div>
             @if (session()->has('message'))
                 <div class="alert alert-warning">
@@ -196,7 +203,7 @@
             @endif
         </div>
     </form>
-    <div class="modal fade" style="zindex:2000; opacity:100; display: {{$showClienteList?"block":"none"}}; ">
+    <div class="modal fade small" style="zindex:2000; opacity:100; display: {{$showClienteList?"block":"none"}}; ">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">

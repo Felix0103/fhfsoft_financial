@@ -35,7 +35,7 @@ class LoanController extends Controller
     }
     public function edit(Loan $loan)
     {
-        //
+       return view('admin.loans.edit', compact('loan'));
     }
     public function update(Request $request, Loan $loan)
     {
@@ -43,6 +43,9 @@ class LoanController extends Controller
     }
     public function destroy(Loan $loan)
     {
-        //
+        $loan->active=0;
+        $loan->update();
+
+        return $loan;
     }
 }

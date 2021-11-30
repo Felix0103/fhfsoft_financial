@@ -17,7 +17,7 @@ class LoanIndex extends Component
     public $search;
     public $sort = 'id';
     public $direction = 'desc';
-
+    public $onlyActive = true;
     public function updatingSearch(){
         $this->resetPage();
     }
@@ -27,10 +27,12 @@ class LoanIndex extends Component
 
         $loans = Loan::with('client','transactions','billing_cycle')->select("loans.*", "clients.first_name","clients.last_name")
         ->leftJoin('clients', 'loans.client_id', '=', 'clients.id')
-        ->where('clients.first_name','like', '%'.$this->search.'%')
-        ->orWhere('clients.last_name','like', '%'.$this->search.'%')
-        ->orWhere('clients.identification','like', '%'.$this->search.'%')
-
+        ->where(function($query) {
+            $query->where('clients.first_name','like', '%'.$this->search.'%')
+            ->orWhere('clients.last_name','like', '%'.$this->search.'%')
+            ->orWhere('clients.identification','like', '%'.$this->search.'%');
+        })
+        ->where('loans.active', $this->onlyActive?'>':'=', 0 )
         //
         ->orderBy($this->sort, $this->direction)
         ->paginate(10);
@@ -51,6 +53,9 @@ class LoanIndex extends Component
             $this->sort =$sort;
             $this->direction ='asc';
         }
+    }
+    public function activeAll(){
+        $this->onlyActive = !$this->onlyActive;
     }
 }
 /*
